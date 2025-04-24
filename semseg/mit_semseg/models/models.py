@@ -25,26 +25,29 @@ class SegmentationModule(SegmentationModuleBase):
         self.decoder = net_dec
         self.crit = crit
         self.deep_sup_scale = deep_sup_scale
+        self.device = 'cpu'
+        if torch.cuda.is_available():
+            self.device = 'cuda'
 
     def forward(self, feed_dict, *, segSize=None):
         # training
         
         if segSize is None:
             if self.deep_sup_scale is not None: # use deep supervision technique
-                (pred, pred_deepsup) = self.decoder(self.encoder(feed_dict['img_data'].to('cuda'), return_feature_maps=True))
+                (pred, pred_deepsup) = self.decoder(self.encoder(feed_dict['img_data'].to(self.device), return_feature_maps=True))
             else:
-                pred = self.decoder(self.encoder(feed_dict['img_data'].to('cuda'), return_feature_maps=True))
+                pred = self.decoder(self.encoder(feed_dict['img_data'].to(self.device), return_feature_maps=True))
 
-            loss = self.crit(pred, feed_dict['seg_label'].to('cuda'))
+            loss = self.crit(pred, feed_dict['seg_label'].to(self.device))
             if self.deep_sup_scale is not None:
-                loss_deepsup = self.crit(pred_deepsup, feed_dict['seg_label'].to('cuda'))
+                loss_deepsup = self.crit(pred_deepsup, feed_dict['seg_label'].to(self.device))
                 loss = loss + loss_deepsup * self.deep_sup_scale
 
-            acc = self.pixel_acc(pred, feed_dict['seg_label'].to('cuda'))
+            acc = self.pixel_acc(pred, feed_dict['seg_label'].to(self.device))
             return loss, acc
         # inference
         else:
-            pred = self.decoder(self.encoder(feed_dict['img_data'].to('cuda'), return_feature_maps=True), segSize=segSize)
+            pred = self.decoder(self.encoder(feed_dict['img_data'].to(self.device), return_feature_maps=True), segSize=segSize)
             return pred
 
 

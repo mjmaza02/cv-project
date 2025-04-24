@@ -13,10 +13,13 @@ class ChannelMaskLayer(nn.Module):
         """
         super().__init__()
         self.register_buffer("mask", mask)
+        self.device = 'cpu'
+        if torch.cuda.is_available():
+            self.device = 'cuda'
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """Calculate masked input."""
-        return x * self.mask[None, :, None, None]
+        return x * self.mask[None, :, None, None].to(self.device)
 
     def _calculate_decided_elements(self, eps: float = 0.01) -> Tuple[float, float, float]:
         """Calculate portion of selected / pruned / undecided elements.
