@@ -11,8 +11,9 @@ chmod +x download_model.sh && ./download_model.sh
 
 This downloads the `ADE20K` image set, as well as the `ResNet50dilated_PPM` model.
 
-To use the pruner, make sure to add the following to any notebook:
+To use the pruner, make sure to add the following to any notebook AT THE TOP:
 
 ```
+!pip install ./semseg/
 !pip install ./acosp/
 ```
