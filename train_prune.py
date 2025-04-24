@@ -203,7 +203,7 @@ def main(cfg, gpus):
         ending_epoch=cfg.TRAIN.num_epoch,  # Pruning duration, change as needed
         final_sparsity=0.5,  # Final sparsity
     )
-    pruner.configure_model(segmentation_module)
+    pruner.configure_model(segmentation_module.encoder)
 
     # Main loop
     history = {'train': {'epoch': [], 'loss': [], 'acc': []}}
@@ -212,10 +212,10 @@ def main(cfg, gpus):
         train(segmentation_module, iterator_train, optimizers, history, epoch+1, cfg)
 
         # Update the temperature in all masking layers
-        pruner.update_mask_layers(segmentation_module, epoch)
+        pruner.update_mask_layers(segmentation_module.encoder, epoch)
         if epoch == pruner.ending_epoch:
             # Convert to binary channel mask
-            acosp.inject.soft_to_hard_k(segmentation_module)
+            acosp.inject.soft_to_hard_k(segmentation_module.encoder)
 
         # checkpointing
         checkpoint(nets, history, cfg, epoch+1)
