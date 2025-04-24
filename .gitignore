@@ -5,3 +5,4 @@ ckpt/
 **/*.jpg
 **/*.png
 pretrained/
+**/__pycache__/
