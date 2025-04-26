@@ -18,6 +18,7 @@ from mit_semseg.lib.nn import UserScatteredDataParallel, user_scattered_collate,
 # Prunning
 from acosp.pruner import SoftTopKPruner
 import acosp.inject
+import torch.nn.utils.prune as prune
 
 
 # train one epoch
@@ -196,26 +197,21 @@ def main(cfg, gpus):
     # Set up optimizers
     nets = (net_encoder, net_decoder, crit)
     optimizers = create_optimizers(nets, cfg)
-
-    # Set up pruner
-    pruner = SoftTopKPruner(
-        starting_epoch=cfg.TRAIN.start_epoch,
-        ending_epoch=cfg.TRAIN.num_epoch,  # Pruning duration, change as needed
-        final_sparsity=0.5,  # Final sparsity
-    )
-    pruner.configure_model(segmentation_module.encoder)
+    
+    def prune_model(model, ratio, dim, n):
+        print(f"Pruning with ratio {ratio}, l-{n} norm, and sparsity of {ratio}")
+        for name, module in model.named_modules():
+            if isinstance(module, nn.Conv2d):
+                prune.ln_structured(module, 'weight', amount=ratio, dim=dim, n=n)
+                prune.remove(module, 'weight')
 
     # Main loop
     history = {'train': {'epoch': [], 'loss': [], 'acc': []}}
 
     for epoch in range(cfg.TRAIN.start_epoch, cfg.TRAIN.num_epoch):
         train(segmentation_module, iterator_train, optimizers, history, epoch+1, cfg)
-
-        # Update the temperature in all masking layers
-        pruner.update_mask_layers(segmentation_module.encoder, epoch)
-        if epoch == pruner.ending_epoch:
-            # Convert to binary channel mask
-            acosp.inject.soft_to_hard_k(segmentation_module.encoder)
+        
+        prune_model(segmentation_module.encoder, 0.5, 1, 1)
 
         # checkpointing
         checkpoint(nets, history, cfg, epoch+1)
