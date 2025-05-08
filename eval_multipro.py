@@ -18,6 +18,7 @@ from mit_semseg.lib.nn import user_scattered_collate, async_copy_to
 from mit_semseg.lib.utils import as_numpy
 from PIL import Image
 from tqdm import tqdm
+import metrics
 
 colors = loadmat('data/color150.mat')['colors']
 
@@ -69,8 +70,9 @@ def evaluate(segmentation_module, loader, cfg, gpu_id, result_queue):
 
         # calculate accuracy and SEND THEM TO MASTER
         acc, pix = accuracy(pred, seg_label)
+        acc_arr = metrics.accuracy(pred, seg_label, cfg.DATASET.num_class)
         intersection, union = intersectionAndUnion(pred, seg_label, cfg.DATASET.num_class)
-        result_queue.put_nowait((acc, pix, intersection, union))
+        result_queue.put_nowait((acc, pix, intersection, union, acc_arr))
 
         # visualization
         if cfg.VAL.visualize:
@@ -129,6 +131,7 @@ def main(cfg, gpus):
     pbar = tqdm(total=num_files)
 
     acc_meter = AverageMeter()
+    acc_arr_meter = AverageMeter()
     intersection_meter = AverageMeter()
     union_meter = AverageMeter()
 
@@ -147,8 +150,9 @@ def main(cfg, gpus):
     while processed_counter < num_files:
         if result_queue.empty():
             continue
-        (acc, pix, intersection, union) = result_queue.get()
+        (acc, pix, intersection, union, acc_arr) = result_queue.get()
         acc_meter.update(acc, pix)
+        acc_arr_meter.update(acc_arr)
         intersection_meter.update(intersection)
         union_meter.update(union)
         processed_counter += 1
@@ -159,9 +163,10 @@ def main(cfg, gpus):
 
     # summary
     iou = intersection_meter.sum / (union_meter.sum + 1e-10)
-    for i, _iou in enumerate(iou):
-        print('class [{}], IoU: {:.4f}'.format(i, _iou))
-
+    for i, _dat in enumerate(zip(iou, acc_arr_meter.average())):
+        _iou, _acc = _dat
+        print('class [{}], IoU: {:.4f}, Acc: {:.2f}%'.format(i, _iou, _acc*100))
+    print(np.mean(acc_arr_meter.average())*100)
     print('[Eval Summary]:')
     print('Mean IoU: {:.4f}, Accuracy: {:.2f}%'
           .format(iou.mean(), acc_meter.average()*100))
