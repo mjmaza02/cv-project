@@ -1,0 +1,201 @@
+[2025-05-08 21:55:07,214 INFO eval_multipro.py line 209 17116] Loaded configuration file config/ade20k-resnet50dilated-ppm_deepsup.yaml
+[2025-05-08 21:55:07,214 INFO eval_multipro.py line 210 17116] Running with config:
+DATASET:
+  imgMaxSize: 1000
+  imgSizes: (300, 375, 450, 525, 600)
+  list_train: ./data/training.odgt
+  list_val: ./data/validation.odgt
+  num_class: 150
+  padding_constant: 8
+  random_flip: True
+  root_dataset: ./data/
+  segm_downsampling_rate: 8
+DIR: ckpt/ade20k-resnet50dilated-ppm_deepsup
+MODEL:
+  arch_decoder: ppm_deepsup
+  arch_encoder: resnet50dilated
+  fc_dim: 2048
+  weights_decoder: 
+  weights_encoder: 
+TEST:
+  batch_size: 1
+  checkpoint: epoch_20.pth
+  result: ./
+TRAIN:
+  batch_size_per_gpu: 2
+  beta1: 0.9
+  deep_sup_scale: 0.4
+  disp_iter: 20
+  epoch_iters: 5000
+  fix_bn: False
+  lr_decoder: 0.02
+  lr_encoder: 0.02
+  lr_pow: 0.9
+  num_epoch: 20
+  optim: SGD
+  seed: 304
+  start_epoch: 0
+  weight_decay: 0.0001
+  workers: 16
+VAL:
+  batch_size: 1
+  checkpoint: epoch_20.pth
+  visualize: False
+gpu:0, start_idx:0, end_idx:100
+# samples: 100
+Loading weights for net_encoder
+Loading weights for net_decoder
+class [0], IoU: 0.7611, Acc: 90.18%
+class [1], IoU: 0.7996, Acc: 97.46%
+class [2], IoU: 0.9689, Acc: 99.61%
+class [3], IoU: 0.7605, Acc: 96.07%
+class [4], IoU: 0.7329, Acc: 99.32%
+class [5], IoU: 0.8108, Acc: 97.75%
+class [6], IoU: 0.6373, Acc: 99.47%
+class [7], IoU: 0.7812, Acc: 99.68%
+class [8], IoU: 0.6189, Acc: 99.21%
+class [9], IoU: 0.6530, Acc: 99.03%
+class [10], IoU: 0.5265, Acc: 99.08%
+class [11], IoU: 0.2680, Acc: 99.21%
+class [12], IoU: 0.8387, Acc: 99.04%
+class [13], IoU: 0.6252, Acc: 99.20%
+class [14], IoU: 0.2937, Acc: 98.41%
+class [15], IoU: 0.2167, Acc: 99.23%
+class [16], IoU: 0.7146, Acc: 100.00%
+class [17], IoU: 0.5075, Acc: 99.70%
+class [18], IoU: 0.6721, Acc: 99.38%
+class [19], IoU: 0.4447, Acc: 99.73%
+class [20], IoU: 0.7407, Acc: 99.64%
+class [21], IoU: 0.0000, Acc: 99.72%
+class [22], IoU: 0.7817, Acc: 99.24%
+class [23], IoU: 0.4849, Acc: 100.00%
+class [24], IoU: 0.0407, Acc: 99.28%
+class [25], IoU: 0.0000, Acc: 99.99%
+class [26], IoU: 0.0000, Acc: 99.95%
+class [27], IoU: 0.7647, Acc: 99.44%
+class [28], IoU: 0.4970, Acc: 99.94%
+class [29], IoU: 0.2656, Acc: 99.42%
+class [30], IoU: 0.4021, Acc: 99.92%
+class [31], IoU: 0.7872, Acc: 99.76%
+class [32], IoU: 0.5008, Acc: 99.86%
+class [33], IoU: 0.0000, Acc: 99.80%
+class [34], IoU: 0.0000, Acc: 100.00%
+class [35], IoU: 0.4895, Acc: 99.78%
+class [36], IoU: 0.4889, Acc: 99.89%
+class [37], IoU: 0.8434, Acc: 99.65%
+class [38], IoU: 0.0544, Acc: 99.84%
+class [39], IoU: 0.1318, Acc: 99.81%
+class [40], IoU: 0.0000, Acc: 99.88%
+class [41], IoU: 0.3328, Acc: 99.62%
+class [42], IoU: 0.6249, Acc: 99.71%
+class [43], IoU: 0.3392, Acc: 99.73%
+class [44], IoU: 0.0000, Acc: 99.94%
+class [45], IoU: 0.4875, Acc: 99.94%
+class [46], IoU: 0.0000, Acc: 100.00%
+class [47], IoU: 0.8258, Acc: 99.75%
+class [48], IoU: 0.0000, Acc: 99.64%
+class [49], IoU: 0.7888, Acc: 99.99%
+class [50], IoU: 0.0000, Acc: 100.00%
+class [51], IoU: 0.8060, Acc: 99.64%
+class [52], IoU: 0.0389, Acc: 99.93%
+class [53], IoU: 0.4008, Acc: 99.90%
+class [54], IoU: 0.8633, Acc: 99.73%
+class [55], IoU: 0.6570, Acc: 98.99%
+class [56], IoU: 0.0000, Acc: 100.00%
+class [57], IoU: 0.7657, Acc: 99.99%
+class [58], IoU: 0.6194, Acc: 99.64%
+class [59], IoU: 0.0083, Acc: 99.29%
+class [60], IoU: 0.0000, Acc: 100.00%
+class [61], IoU: 0.0000, Acc: 99.91%
+class [62], IoU: 0.1134, Acc: 99.89%
+class [63], IoU: 0.0000, Acc: 99.98%
+class [64], IoU: 0.0798, Acc: 99.99%
+class [65], IoU: 0.9052, Acc: 99.88%
+class [66], IoU: 0.5677, Acc: 99.97%
+class [67], IoU: 0.7152, Acc: 99.88%
+class [68], IoU: 0.0000, Acc: 100.00%
+class [69], IoU: 0.0000, Acc: 99.87%
+class [70], IoU: 0.6569, Acc: 99.79%
+class [71], IoU: 0.0000, Acc: 100.00%
+class [72], IoU: 0.3092, Acc: 99.99%
+class [73], IoU: 0.0000, Acc: 100.00%
+class [74], IoU: 0.0000, Acc: 99.94%
+class [75], IoU: 0.0000, Acc: 99.85%
+class [76], IoU: 0.0000, Acc: 100.00%
+class [77], IoU: 0.4519, Acc: 99.39%
+class [78], IoU: 0.2958, Acc: 99.65%
+class [79], IoU: 0.0000, Acc: 100.00%
+class [80], IoU: 0.1932, Acc: 99.99%
+class [81], IoU: 0.6161, Acc: 99.87%
+class [82], IoU: 0.2158, Acc: 99.93%
+class [83], IoU: 0.0000, Acc: 99.91%
+class [84], IoU: 0.0000, Acc: 100.00%
+class [85], IoU: 0.0000, Acc: 100.00%
+class [86], IoU: 0.0121, Acc: 99.97%
+class [87], IoU: 0.0873, Acc: 99.96%
+class [88], IoU: 0.0000, Acc: 100.00%
+class [89], IoU: 0.0000, Acc: 99.96%
+class [90], IoU: 0.6325, Acc: 99.91%
+class [91], IoU: 0.0000, Acc: 100.00%
+class [92], IoU: 0.0000, Acc: 100.00%
+class [93], IoU: 0.0000, Acc: 99.94%
+class [94], IoU: 0.0000, Acc: 100.00%
+class [95], IoU: 0.0208, Acc: 99.78%
+class [96], IoU: 0.0000, Acc: 99.85%
+class [97], IoU: 0.0000, Acc: 100.00%
+class [98], IoU: 0.1024, Acc: 99.98%
+class [99], IoU: 0.0000, Acc: 100.00%
+class [100], IoU: 0.0000, Acc: 99.99%
+class [101], IoU: 0.0000, Acc: 99.93%
+class [102], IoU: 0.3073, Acc: 99.98%
+class [103], IoU: 0.0000, Acc: 100.00%
+class [104], IoU: 0.0000, Acc: 100.00%
+class [105], IoU: 0.5293, Acc: 99.79%
+class [106], IoU: 0.0000, Acc: 100.00%
+class [107], IoU: 0.0000, Acc: 100.00%
+class [108], IoU: 0.0000, Acc: 99.96%
+class [109], IoU: 0.0000, Acc: 100.00%
+class [110], IoU: 0.2347, Acc: 99.80%
+class [111], IoU: 0.0000, Acc: 100.00%
+class [112], IoU: 0.0059, Acc: 99.91%
+class [113], IoU: 0.0000, Acc: 100.00%
+class [114], IoU: 0.0000, Acc: 100.00%
+class [115], IoU: 0.0206, Acc: 99.96%
+class [116], IoU: 0.1860, Acc: 99.98%
+class [117], IoU: 0.0000, Acc: 99.99%
+class [118], IoU: 0.0000, Acc: 100.00%
+class [119], IoU: 0.7099, Acc: 99.93%
+class [120], IoU: 0.5377, Acc: 99.71%
+class [121], IoU: 0.0000, Acc: 99.98%
+class [122], IoU: 0.0000, Acc: 100.00%
+class [123], IoU: 0.0000, Acc: 99.97%
+class [124], IoU: 0.0000, Acc: 100.00%
+class [125], IoU: 0.0469, Acc: 99.86%
+class [126], IoU: 0.0000, Acc: 100.00%
+class [127], IoU: 0.0000, Acc: 100.00%
+class [128], IoU: 0.0000, Acc: 100.00%
+class [129], IoU: 0.0000, Acc: 100.00%
+class [130], IoU: 0.0000, Acc: 100.00%
+class [131], IoU: 0.0000, Acc: 100.00%
+class [132], IoU: 0.3163, Acc: 99.97%
+class [133], IoU: 0.0000, Acc: 100.00%
+class [134], IoU: 0.4705, Acc: 99.95%
+class [135], IoU: 0.5615, Acc: 99.99%
+class [136], IoU: 0.0000, Acc: 100.00%
+class [137], IoU: 0.0709, Acc: 99.67%
+class [138], IoU: 0.0230, Acc: 99.97%
+class [139], IoU: 0.0543, Acc: 99.99%
+class [140], IoU: 0.0000, Acc: 100.00%
+class [141], IoU: 0.0000, Acc: 99.98%
+class [142], IoU: 0.0000, Acc: 100.00%
+class [143], IoU: 0.0000, Acc: 99.97%
+class [144], IoU: 0.1256, Acc: 99.99%
+class [145], IoU: 0.0026, Acc: 99.98%
+class [146], IoU: 0.0000, Acc: 99.99%
+class [147], IoU: 0.0000, Acc: 99.99%
+class [148], IoU: 0.7112, Acc: 100.00%
+class [149], IoU: 0.0000, Acc: 99.99%
+99.70800419654434
+[Eval Summary]:
+Mean IoU: 0.2557, Accuracy: 82.76%
+Evaluation Done!

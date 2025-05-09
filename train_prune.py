@@ -198,11 +198,11 @@ def main(cfg, gpus):
     nets = (net_encoder, net_decoder, crit)
     optimizers = create_optimizers(nets, cfg)
     
-    def prune_model(model, ratio, dim, n):
-        print(f"Pruning with ratio {ratio}, l-{n} norm, and sparsity of {ratio}")
+    def prune_model(model, ratio, n):
+        print(f"Pruning with l-{n} norm, and sparsity of {ratio}")
         for name, module in model.named_modules():
             if isinstance(module, nn.Conv2d):
-                prune.ln_structured(module, 'weight', amount=ratio, dim=dim, n=n)
+                prune.ln_structured(module, 'weight', amount=ratio, dim=1, n=n)
                 prune.remove(module, 'weight')
 
     # Main loop
@@ -211,7 +211,7 @@ def main(cfg, gpus):
     for epoch in range(cfg.TRAIN.start_epoch, cfg.TRAIN.num_epoch):
         train(segmentation_module, iterator_train, optimizers, history, epoch+1, cfg)
         
-        prune_model(segmentation_module.encoder, 0.5, 1, 1)
+        prune_model(segmentation_module.encoder, ratio, n)
 
         # checkpointing
         checkpoint(nets, history, cfg, epoch+1)
@@ -239,11 +239,20 @@ if __name__ == '__main__':
         help="gpus to use, e.g. 0-3 or 0,1,2,3"
     )
     parser.add_argument(
+        "--ratio",
+        default="0.5",
+    )
+    parser.add_argument(
+        "-n",
+        default="1",
+    )
+    parser.add_argument(
         "opts",
         help="Modify config options using the command-line",
         default=None,
         nargs=argparse.REMAINDER,
     )
+
     args = parser.parse_args()
 
     cfg.merge_from_file(args.cfg)
@@ -275,6 +284,8 @@ if __name__ == '__main__':
     gpus = [x.replace('gpu', '') for x in gpus]
     gpus = [int(x) for x in gpus]
     num_gpus = len(gpus)
+    ratio = float(args.ratio)
+    n = int(args.n)
     cfg.TRAIN.batch_size = num_gpus * cfg.TRAIN.batch_size_per_gpu
 
     cfg.TRAIN.max_iters = cfg.TRAIN.epoch_iters * cfg.TRAIN.num_epoch
