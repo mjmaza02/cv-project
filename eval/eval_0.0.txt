@@ -1,5 +1,5 @@
-[2025-05-08 21:55:39,279 INFO eval_multipro.py line 209 17189] Loaded configuration file config/ade20k-resnet50dilated-ppm_deepsup.yaml
-[2025-05-08 21:55:39,279 INFO eval_multipro.py line 210 17189] Running with config:
+[2025-05-12 00:21:14,885 INFO eval_multipro.py line 209 2345] Loaded configuration file config/ade20k-resnet50dilated-ppm_deepsup.yaml
+[2025-05-12 00:21:14,886 INFO eval_multipro.py line 210 2345] Running with config:
 DATASET:
   imgMaxSize: 1000
   imgSizes: (300, 375, 450, 525, 600)
