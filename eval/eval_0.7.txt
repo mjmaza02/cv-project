@@ -1,5 +1,5 @@
-[2025-05-12 09:05:03,246 INFO eval_multipro.py line 209 4202] Loaded configuration file config/ade20k-resnet50dilated-ppm_deepsup.yaml
-[2025-05-12 09:05:03,246 INFO eval_multipro.py line 210 4202] Running with config:
+[2025-05-13 06:36:11,938 INFO eval_multipro.py line 209 10063] Loaded configuration file config/ade20k-resnet50dilated-ppm_deepsup.yaml
+[2025-05-13 06:36:11,938 INFO eval_multipro.py line 210 10063] Running with config:
 DATASET:
   imgMaxSize: 1000
   imgSizes: (300, 375, 450, 525, 600)
@@ -39,51 +39,51 @@ TRAIN:
   workers: 16
 VAL:
   batch_size: 1
-  checkpoint: epoch_25.pth
+  checkpoint: epoch_25_0.7.pth
   visualize: False
 gpu:0, start_idx:0, end_idx:100
 # samples: 100
 Loading weights for net_encoder
 Loading weights for net_decoder
-class [0], IoU: 0.3940, Acc: 59.22%
-class [1], IoU: 0.1464, Acc: 89.83%
-class [2], IoU: 0.3774, Acc: 93.01%
-class [3], IoU: 0.4272, Acc: 91.09%
-class [4], IoU: 0.0841, Acc: 98.19%
-class [5], IoU: 0.3118, Acc: 94.31%
-class [6], IoU: 0.0268, Acc: 99.06%
-class [7], IoU: 0.0000, Acc: 99.08%
-class [8], IoU: 0.0046, Acc: 98.20%
-class [9], IoU: 0.1095, Acc: 99.18%
-class [10], IoU: 0.0014, Acc: 98.34%
-class [11], IoU: 0.0000, Acc: 99.26%
-class [12], IoU: 0.0000, Acc: 95.92%
-class [13], IoU: 0.0086, Acc: 98.59%
-class [14], IoU: 0.1077, Acc: 98.14%
+class [0], IoU: 0.4281, Acc: 71.37%
+class [1], IoU: 0.3092, Acc: 89.26%
+class [2], IoU: 0.3885, Acc: 92.04%
+class [3], IoU: 0.4698, Acc: 94.25%
+class [4], IoU: 0.1619, Acc: 97.79%
+class [5], IoU: 0.3450, Acc: 93.97%
+class [6], IoU: 0.0256, Acc: 99.04%
+class [7], IoU: 0.0685, Acc: 98.64%
+class [8], IoU: 0.1017, Acc: 98.23%
+class [9], IoU: 0.0000, Acc: 99.16%
+class [10], IoU: 0.2419, Acc: 98.15%
+class [11], IoU: 0.0058, Acc: 98.99%
+class [12], IoU: 0.1639, Acc: 95.67%
+class [13], IoU: 0.1527, Acc: 98.17%
+class [14], IoU: 0.0479, Acc: 98.35%
 class [15], IoU: 0.0000, Acc: 99.31%
-class [16], IoU: 0.0000, Acc: 99.99%
-class [17], IoU: 0.0000, Acc: 99.65%
-class [18], IoU: 0.0749, Acc: 97.80%
+class [16], IoU: 0.0022, Acc: 95.39%
+class [17], IoU: 0.0052, Acc: 99.65%
+class [18], IoU: 0.1905, Acc: 97.11%
 class [19], IoU: 0.0000, Acc: 99.84%
-class [20], IoU: 0.0000, Acc: 99.23%
-class [21], IoU: 0.0000, Acc: 99.73%
-class [22], IoU: 0.0000, Acc: 98.60%
+class [20], IoU: 0.0208, Acc: 99.25%
+class [21], IoU: 0.0000, Acc: 99.36%
+class [22], IoU: 0.0147, Acc: 98.62%
 class [23], IoU: 0.0000, Acc: 99.99%
-class [24], IoU: 0.0000, Acc: 99.18%
+class [24], IoU: 0.0000, Acc: 99.86%
 class [25], IoU: 0.0000, Acc: 100.00%
-class [26], IoU: 0.0000, Acc: 99.13%
+class [26], IoU: 0.0000, Acc: 86.92%
 class [27], IoU: 0.0000, Acc: 98.63%
 class [28], IoU: 0.0000, Acc: 99.86%
-class [29], IoU: 0.0000, Acc: 98.99%
+class [29], IoU: 0.0000, Acc: 99.17%
 class [30], IoU: 0.0000, Acc: 99.90%
-class [31], IoU: 0.0000, Acc: 99.16%
+class [31], IoU: 0.0000, Acc: 99.17%
 class [32], IoU: 0.0000, Acc: 99.84%
 class [33], IoU: 0.0000, Acc: 100.00%
 class [34], IoU: 0.0000, Acc: 100.00%
-class [35], IoU: 0.0000, Acc: 99.21%
+class [35], IoU: 0.0000, Acc: 99.81%
 class [36], IoU: 0.0000, Acc: 99.87%
-class [37], IoU: 0.0168, Acc: 98.83%
-class [38], IoU: 0.0000, Acc: 99.84%
+class [37], IoU: 0.0033, Acc: 98.79%
+class [38], IoU: 0.0000, Acc: 99.85%
 class [39], IoU: 0.0000, Acc: 99.77%
 class [40], IoU: 0.0000, Acc: 100.00%
 class [41], IoU: 0.0000, Acc: 99.51%
@@ -92,29 +92,29 @@ class [43], IoU: 0.0000, Acc: 99.76%
 class [44], IoU: 0.0000, Acc: 100.00%
 class [45], IoU: 0.0000, Acc: 99.98%
 class [46], IoU: 0.0000, Acc: 100.00%
-class [47], IoU: 0.0000, Acc: 99.19%
-class [48], IoU: 0.0000, Acc: 97.25%
+class [47], IoU: 0.0087, Acc: 99.19%
+class [48], IoU: 0.0000, Acc: 99.61%
 class [49], IoU: 0.0000, Acc: 99.96%
 class [50], IoU: 0.0000, Acc: 100.00%
-class [51], IoU: 0.1438, Acc: 99.17%
+class [51], IoU: 0.0000, Acc: 99.13%
 class [52], IoU: 0.0000, Acc: 99.94%
 class [53], IoU: 0.0000, Acc: 99.87%
-class [54], IoU: 0.0819, Acc: 99.31%
-class [55], IoU: 0.0000, Acc: 98.06%
-class [56], IoU: 0.0000, Acc: 99.99%
+class [54], IoU: 0.0000, Acc: 99.25%
+class [55], IoU: 0.0000, Acc: 98.07%
+class [56], IoU: 0.0000, Acc: 100.00%
 class [57], IoU: 0.0000, Acc: 99.97%
-class [58], IoU: 0.0000, Acc: 99.33%
-class [59], IoU: 0.0323, Acc: 98.67%
+class [58], IoU: 0.0000, Acc: 99.34%
+class [59], IoU: 0.0000, Acc: 99.55%
 class [60], IoU: 0.0000, Acc: 100.00%
 class [61], IoU: 0.0000, Acc: 100.00%
-class [62], IoU: 0.1351, Acc: 99.80%
-class [63], IoU: 0.0000, Acc: 100.00%
+class [62], IoU: 0.0000, Acc: 99.92%
+class [63], IoU: 0.0000, Acc: 99.97%
 class [64], IoU: 0.0000, Acc: 99.99%
 class [65], IoU: 0.0000, Acc: 99.13%
 class [66], IoU: 0.0000, Acc: 99.96%
-class [67], IoU: 0.2344, Acc: 99.84%
+class [67], IoU: 0.0000, Acc: 99.81%
 class [68], IoU: 0.0000, Acc: 100.00%
-class [69], IoU: 0.0000, Acc: 99.84%
+class [69], IoU: 0.0000, Acc: 99.89%
 class [70], IoU: 0.0000, Acc: 99.54%
 class [71], IoU: 0.0000, Acc: 100.00%
 class [72], IoU: 0.0000, Acc: 99.99%
@@ -127,7 +127,7 @@ class [78], IoU: 0.0000, Acc: 99.51%
 class [79], IoU: 0.0000, Acc: 100.00%
 class [80], IoU: 0.0000, Acc: 99.99%
 class [81], IoU: 0.0000, Acc: 99.78%
-class [82], IoU: 0.0000, Acc: 99.92%
+class [82], IoU: 0.0049, Acc: 99.92%
 class [83], IoU: 0.0000, Acc: 99.99%
 class [84], IoU: 0.0000, Acc: 100.00%
 class [85], IoU: 0.0000, Acc: 100.00%
@@ -146,7 +146,7 @@ class [97], IoU: 0.0000, Acc: 100.00%
 class [98], IoU: 0.0000, Acc: 99.99%
 class [99], IoU: 0.0000, Acc: 100.00%
 class [100], IoU: 0.0000, Acc: 100.00%
-class [101], IoU: 0.0000, Acc: 99.94%
+class [101], IoU: 0.0000, Acc: 99.95%
 class [102], IoU: 0.0000, Acc: 99.98%
 class [103], IoU: 0.0000, Acc: 100.00%
 class [104], IoU: 0.0000, Acc: 100.00%
@@ -195,7 +195,7 @@ class [146], IoU: 0.0000, Acc: 100.00%
 class [147], IoU: 0.0000, Acc: 99.99%
 class [148], IoU: 0.0000, Acc: 100.00%
 class [149], IoU: 0.0000, Acc: 100.00%
-99.20981077823284
+99.20027812933436
 [Eval Summary]:
-Mean IoU: 0.0181, Accuracy: 40.38%
+Mean IoU: 0.0211, Accuracy: 41.04%
 Evaluation Done!

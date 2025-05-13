@@ -80,13 +80,13 @@ def checkpoint(nets, history, cfg, epoch):
 
     torch.save(
         history,
-        '{}/history_epoch_{}.pth'.format(cfg.DIR, epoch))
+        '{}/history_epoch_{}_{}.pth'.format(cfg.DIR, epoch, ratio))
     torch.save(
         dict_encoder,
-        '{}/encoder_epoch_{}.pth'.format(cfg.DIR, epoch))
+        '{}/encoder_epoch_{}_{}.pth'.format(cfg.DIR, epoch, ratio))
     torch.save(
         dict_decoder,
-        '{}/decoder_epoch_{}.pth'.format(cfg.DIR, epoch))
+        '{}/decoder_epoch_{}_{}.pth'.format(cfg.DIR, epoch, ratio))
 
 
 def group_weight(module):
@@ -213,6 +213,10 @@ if __name__ == '__main__':
         description="PyTorch Semantic Segmentation Training"
     )
     parser.add_argument(
+        "--ratio",
+        default="0.5",
+    )
+    parser.add_argument(
         "--cfg",
         default="config/ade20k-resnet50dilated-ppm_deepsup.yaml",
         metavar="FILE",
@@ -258,6 +262,7 @@ if __name__ == '__main__':
 
     # Parse gpu ids
     gpus = parse_devices(args.gpus)
+    ratio = float(args.ratio)
     gpus = [x.replace('gpu', '') for x in gpus]
     gpus = [int(x) for x in gpus]
     num_gpus = len(gpus)

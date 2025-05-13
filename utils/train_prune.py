@@ -85,13 +85,13 @@ def checkpoint(nets, history, cfg, epoch):
 
     torch.save(
         history,
-        '{}/history_epoch_{}.pth'.format(cfg.DIR, epoch))
+        '{}/history_epoch_{}_{}.pth'.format(cfg.DIR, epoch, ratio))
     torch.save(
         dict_encoder,
-        '{}/encoder_epoch_{}.pth'.format(cfg.DIR, epoch))
+        '{}/encoder_epoch_{}_{}.pth'.format(cfg.DIR, epoch, ratio))
     torch.save(
         dict_decoder,
-        '{}/decoder_epoch_{}.pth'.format(cfg.DIR, epoch))
+        '{}/decoder_epoch_{}_{}.pth'.format(cfg.DIR, epoch, ratio))
 
 
 def group_weight(module):
